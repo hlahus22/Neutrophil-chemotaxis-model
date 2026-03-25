@@ -20,7 +20,7 @@ Dx   = 0.1;         % grid size (um)
 N    = round(L/Dx); % integer number of grid points
 
 % time
-Ttot = 1*60;       % simulation time (s)
+Ttot = 1.5*60;       % simulation time (s)
 Dt   = 0.01;        % diffusion time step (s)
 Ns   = Ttot/Dt;     % number of time steps in the simulation
 Nr   = 300;         % number of reaction steps per diffusion step 
@@ -49,7 +49,7 @@ DM_mem = A;
 if d > 0.5
     disp('no convergence')
     disp('Dm*Dt/(Dx^2) = ')
-    d
+    d;
 end
 
 % Diffusion matrix cytoplasm
@@ -67,7 +67,7 @@ DM_cyt = A;
 if d > 0.5
     disp('no convergence')
     disp('Dm*Dt/(Dx^2) = ')
-    d
+    d;
 end
 
 % End diffusion parameters. 
@@ -75,18 +75,18 @@ end
 
 % All parameters set to 1, this will have to be changed.
 
-k1  = 0.5;
+k1  = 1;
 k2  = 1;
 k3  = 1;
-k4  = 1;
-k5  = 1;
-k6  = 1;
+k4  = 8;
+k5  = 0.5;
+k6  = 4;
 k7  = 1;
 k8  = 1;
 k9  = 1;
 k10 = 1;
-k11 = 2;
-k12 = 1;
+k11 = 1;
+k12 = 1.64;
 k13 = 1;
 
 % End reaction parameters
