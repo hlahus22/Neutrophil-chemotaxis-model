@@ -20,7 +20,7 @@ Dx   = 0.1;         % grid size (um)
 N    = round(L/Dx); % integer number of grid points
 
 % time
-Ttot = 2*60;       % simulation time (s)
+Ttot = 2.5*60;       % simulation time (s)
 Dt   = 0.01;        % diffusion time step (s)
 Ns   = Ttot/Dt;     % number of time steps in the simulation
 Nr   = 300;         % number of reaction steps per diffusion step 
@@ -83,7 +83,7 @@ k5  = 0.5;
 k6  = 4;
 k7  = 1;
 k8  = 1;
-k9  = 1;
+k9  = 3;
 k10 = 1;
 k11 = 1;
 k12 = 1.64;
