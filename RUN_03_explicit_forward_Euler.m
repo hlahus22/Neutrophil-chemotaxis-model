@@ -16,7 +16,7 @@ for j = 1:Nr    % solve the reaction equations for time Dt
 
     Gabg  = Gabg_old  + DtR*(k2 - k1*L.*Gabg_old);
     
-    Gbg   = Gbg_old   + DtR*(k1*L + k5*myoII_old.*PI3Km_old - k3*Gbg_old - k4*Gbg_old.*PI3Kc_old);
+    Gbg   = Gbg_old   + DtR*(k1*L.*Gabg_old + k5*myoII_old.*PI3Km_old - k3*Gbg_old - k4*Gbg_old.*PI3Kc_old);
     
     PI3Km = PI3Km_old + DtR*(k4*Gbg_old.*PI3Kc_old - k5*myoII_old.*PI3Km_old);
     
