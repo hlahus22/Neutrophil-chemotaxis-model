@@ -11,14 +11,14 @@ CC7 = load('data_actin_time_course');
 CC8 = load('data_myoII_time_course');
 CC9 = load('data_PTEN_time_course');
 
-figure
+figure('Color', 'w');
 subplot(3,3,1)
 pcolor(CC1);shading flat
 colormap(jet)
 xlabel('Distance (\mum)')
 ylabel('Time (s)')
 xticks([1 N/2 N])
-xticklabels({'0', L/2, '1'})
+xticklabels({'0', Len/2, Len})
 title('Gabg')
 colorbar
 
@@ -28,7 +28,7 @@ colormap(jet)
 xlabel('Distance (\mum)')
 ylabel('Time (s)')
 xticks([1 N/2 N])
-xticklabels({'0', L/2, '1'})
+xticklabels({'0', Len/2, Len})
 title('Gbg')
 colorbar
 
@@ -38,7 +38,7 @@ colormap(jet)
 xlabel('Distance (\mum)')
 ylabel('Time (s)')
 xticks([1 N/2 N])
-xticklabels({'0', L/2, '1'})
+xticklabels({'0', Len/2, Len})
 title('PI3Km')
 colorbar
 
@@ -48,7 +48,7 @@ colormap(jet)
 xlabel('Distance (\mum)')
 ylabel('Time (s)')
 xticks([1 N/2 N])
-xticklabels({'0', L/2, '1'})
+xticklabels({'0', Len/2, Len})
 title('PI3Kc')
 colorbar
 
@@ -58,7 +58,7 @@ colormap(jet)
 xlabel('Distance (\mum)')
 ylabel('Time (s)')
 xticks([1 N/2 N])
-xticklabels({'0', L/2, '1'})
+xticklabels({'0', Len/2, Len})
 title('PIP2')
 colorbar
 
@@ -68,7 +68,7 @@ colormap(jet)
 xlabel('Distance (\mum)')
 ylabel('Time (s)')
 xticks([1 N/2 N])
-xticklabels({'0', L/2, '1'})
+xticklabels({'0', Len/2, Len})
 title('PIP3')
 colorbar
 
@@ -78,7 +78,7 @@ colormap(jet)
 xlabel('Distance (\mum)')
 ylabel('Time (s)')
 xticks([1 N/2 N])
-xticklabels({'0', L/2, '1'})
+xticklabels({'0', Len/2, Len})
 title('actin')
 colorbar
 
@@ -88,7 +88,7 @@ colormap(jet)
 xlabel('Distance (\mum)')
 ylabel('Time (s)')
 xticks([1 N/2 N])
-xticklabels({'0', L/2, '1'})
+xticklabels({'0', Len/2, Len})
 title('myoII')
 colorbar
 
@@ -98,6 +98,6 @@ colormap(jet)
 xlabel('Distance (\mum)')
 ylabel('Time (s)')
 xticks([1 N/2 N])
-xticklabels({'0', L/2, '1'})
+xticklabels({'0', Len/2, Len})
 title('PTEN')
 colorbar
