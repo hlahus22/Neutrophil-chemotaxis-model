@@ -68,6 +68,8 @@ k10 = 1;
 k11 = 1;
 k12 = 1.64; % exparimentally validated
 k13 = 1;
+k14 = 1;
+k15 = 0.1;
 
 % End reaction parameters
 %% Initial concentrations 
@@ -86,6 +88,8 @@ actin = rand(N,1);
 myoII = rand(N,1); 
 
 % ligand
-L     = [zeros(N/3,1); ones(N/3,1) ; zeros(N/3,1)];  
+L     = zeros(N,1);
+L(50:60) = 1;
+
 
 % End initial concentrations

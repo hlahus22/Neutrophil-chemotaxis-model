@@ -14,7 +14,7 @@ for j = 1:Nr    % solve the reaction equations for time Dt
     
     % Euler method
 
-    Gabg  = Gabg_old  + DtR*(k2 - k1*L.*Gabg_old);
+    Gabg  = Gabg_old  + DtR*(k2 - k1*L.*Gabg_old - k15*Gabg_old);
     
     Gbg   = Gbg_old   + DtR*(k1*L.*Gabg_old + k5*myoII_old.*PI3Km_old - k3*Gbg_old - k4*Gbg_old.*PI3Kc_old);
     
@@ -30,7 +30,7 @@ for j = 1:Nr    % solve the reaction equations for time Dt
     
     myoII = myoII_old + DtR*(k9*PTEN_old - k13*myoII_old);
     
-    PTEN  = PTEN_old  + DtR*(k10 - k11*actin_old.*PTEN_old);
+    PTEN  = PTEN_old  + DtR*(k10 - k11*actin_old.*PTEN_old - k14*PTEN_old);
 
     
 
