@@ -15,14 +15,14 @@ m_store = fopen('data_mass_time_course','w');  % protein mass
 %% Space and time parameters for differential equation solvers. 
 
 % space
-L    = 26.4;        % length of membrane (um)
-Dx   = 0.1;         % grid size (um)
-N    = round(L/Dx); % integer number of grid points
+Len  = 26.4;          % length of membrane (um)
+Dx   = 0.1;           % grid size (um)
+N    = round(Len/Dx); % integer number of grid points
 
 % time
-Ttot = 1*60;       % simulation time (s)
+Ttot = 5*60;       % simulation time (s)
 Dt   = 0.01;        % diffusion time step (s)
-Ns   = Ttot/Dt;     % number of time steps in the simulation
+Ns   = Ttot/Dt;     % number of diffusion time steps in the simulation
 Nr   = 300;         % number of reaction steps per diffusion step 
 DtR  = Dt/Nr;       % reaction time step (s)
 
@@ -31,10 +31,9 @@ DtR  = Dt/Nr;       % reaction time step (s)
 % For now all membrane associated proteins that diffuse will diffuse with
 % the same diffusion coefficient. This can be changed later. 
 
-Dm   = 0.1;         % Diffusion coefficient membrane ( (um^2)/s )    
-Dc   = 0.5;         % Diffusion coefficient cytoplasm ( (um^2)/s )  
+Dm   = 0.1;         % Diffusion coefficient ( (um^2)/s )    
 
-% Diffusion matrix membrane
+% Diffusion matrix 
 d = Dm*Dt/(Dx^2);
 A = (1-2*d)*eye(N);
 Ap = d*diag(ones(1,N-1),1);
@@ -43,31 +42,12 @@ A = A + Ap + Am;
 A(1,N) = d;
 A(N,1) = d;
 A = sparse(A);
-DM_mem = A;
 
 % check for convergence 1D
 if d > 0.5
     disp('no convergence')
     disp('Dm*Dt/(Dx^2) = ')
-    d;
-end
-
-% Diffusion matrix cytoplasm
-d = Dc*Dt/(Dx^2);
-A = (1-2*d)*eye(N);
-Ap = d*diag(ones(1,N-1),1);
-Am = d*diag(ones(1,N-1),-1);
-A = A + Ap + Am;
-A(1,N) = d;
-A(N,1) = d;
-A = sparse(A);
-DM_cyt = A;
-
-% check for convergence 1D
-if d > 0.5
-    disp('no convergence')
-    disp('Dm*Dt/(Dx^2) = ')
-    d;
+    d
 end
 
 % End diffusion parameters. 
@@ -80,14 +60,16 @@ k2  = 1;
 k3  = 1;
 k4  = 8;
 k5  = 0.5;
-k6  = 4;
+k6  = 4; % exparimentally validated
 k7  = 1;
-k8  = 1;
-k9  = 7;
+k8  = 0.1;
+k9  = 8;
 k10 = 1;
 k11 = 1;
-k12 = 1.64;
+k12 = 1.64; % exparimentally validated
 k13 = 1;
+k14 = 1;
+k15 = 0.1;
 
 % End reaction parameters
 %% Initial concentrations 
@@ -105,7 +87,9 @@ PTEN  = rand(N,1);
 actin = rand(N,1);   
 myoII = rand(N,1); 
 
-% lehand
-L     = [ones(N/2,1) ; zeros(N/2,1)];    
+% ligand
+L     = zeros(N,1);
+L(50:60) = 1;
+
 
 % End initial concentrations
